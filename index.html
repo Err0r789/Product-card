@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        Cart (<span id="cart-count">0</span>)
+        <a href="checkout.html" class="checkout-button">Go to Checkout</a>
+    </nav>
+    <div class="container">
+        <div class="grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <img src="img/iphone15.jpg" alt="iPhone 15" class="product-img">
+                <h3>iPhone 15</h3>
+                <p>₹79,900.00</p>
+                <div class="flex-center">
+                    <button onclick="updateItem('Product 1', 'minus', 79900, 'img/iphone15.jpg')">-</button>
+                    <span id="Product 1-quantity">0</span>
+                    <button onclick="updateItem('Product 1', 'plus', 79900, 'img/iphone15.jpg')">+</button>
+                </div>
+                <button onclick="addToCart('Product 1', event)" data-price="79900">Add to Cart</button>
+             </div>
+             <!-- Product Card 2 -->
+             <div class="product-card">
+                <img src="img/iphone15pro.png" alt="iPhone 15 Pro" class="product-img">
+                <h3>iPhone 15 Pro</h3>
+                <p>₹1,34,900.00</p>
+                <div class="flex-center">
+                    <button onclick="updateItem('Product 2', 'minus', 134900, 'img/iphone15pro.png')" >-</button>
+                    <span id="Product 2-quantity" >0</span>
+                    <button onclick="updateItem('Product 2', 'plus', 134900, 'img/iphone15pro.png')">+</button>
+                </div>
+                <button onclick="addToCart('Product 2', event)" data-price="134900">Add to Cart</button>
+            </div>
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <img src="img/iphone15proMax.png" alt="iPhone 15 Pro Max" class="product-img">
+                <h3>iPhone 15 Pro Max</h3>
+                <p>₹1,84,900.00</p>
+                <div class="flex-center">
+                    <button onclick="updateItem('Product 3', 'minus', 184900, 'img/iphone15proMax.png')" >-</button>
+                    <span id="Product 3-quantity" class="mx-2">0</span>
+                    <button onclick="updateItem('Product 3', 'plus', 184900, 'img/iphone15proMax.png')" >+</button>
+                </div>
+                <button onclick="addToCart('Product 3', event)" data-price="184900">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

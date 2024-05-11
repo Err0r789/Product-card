@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            flex-grow: 1;
+        }
+
+        .product-details h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        #total-amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: right;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <div id="cart-items"></div>
+        <h2 id="total-amount">Total: ₹0.00</h2>
+    </div>
+    <script>
+        function displayCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';  // Clear previous items to ensure no duplicates
+            let total = 0;
+
+            Object.entries(cart).forEach(([productName, productDetails]) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="product-info">
+                        <img src="${productDetails.image}" alt="${productName}" class="product-image">
+                        <div class="product-details">
+                            <h3>${productName}</h3>
+                            <p>Quantity: ${productDetails.quantity}</p>
+                            <p>Price: ₹${productDetails.price.toFixed(2)}</p>
+                            <p>Total: ₹${(productDetails.quantity * productDetails.price).toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(itemElement);
+                total += productDetails.quantity * productDetails.price;
+            });
+
+            const totalAmount = document.getElementById('total-amount');
+            totalAmount.textContent = `Total: ₹${total.toFixed(2)}`;
+        }
+
+        window.onload = displayCartItems;
+    </script>
+</body>
+</html>
