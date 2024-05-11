@@ -63,7 +63,7 @@
         function displayCartItems() {
             const cart = JSON.parse(localStorage.getItem('cart')) || {};
             const container = document.getElementById('cart-items');
-            container.innerHTML = '';  // Clear previous items to ensure no duplicates
+            container.innerHTML = '';  
             let total = 0;
 
             Object.entries(cart).forEach(([productName, productDetails]) => {
